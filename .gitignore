@@ -1,0 +1,19 @@
+# Nyers és köztes adat: a scripts/letoltes.py újra előállítja, a data/manifest/ rögzíti
+data/raw/
+data/interim/
+*.tmp
+
+__pycache__/
+.venv*/
+.ipynb_checkpoints/
+
+# Munkafolyamat- és csapatdokumentumok (Claude-jegyzetek, belső terv, a jogi csapat anyaga és munkaoldala)
+CLAUDE.md
+docs/
+terv.md
+EVK_jogi_krit*.docx
+web/
+belso_anyagok.zip
+
+node_modules/
+package-lock.json

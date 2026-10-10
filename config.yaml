@@ -1,0 +1,62 @@
+# A számítás összes paramétere. A nyitott csapatdöntéseket a "DONTES" megjegyzés jelöli.
+
+oevk_szam: 106
+
+# Vjt. 4. § (8): a megelőző általános választás napján jogosultak száma.
+# DONTES (jogi csapat): "indulo" = lakcím szerinti induló létszám (7 650 260),
+#                       "osszesen" = választás napi névjegyzék (7 618 472).
+letszam_mezo: indulo
+letszam_valasztas: ogy2026
+trend_valasztas: ogy2022          # népességmozgás: 2022 -> 2026 trend
+
+turesek:
+  kemeny_felso: 0.20              # Vjt. 4. § (6)
+  indokolando: 0.15               # Vjt. 4. § (4), csak a (2) a)-b) miatt léphető túl
+  velencei: 0.10                  # Code of Good Practice
+  # DONTES: "kotelezo" vagy "ajanlott" — a 10% kemény korlát-e, ahol a megyei átlag engedi
+  velencei_statusz: ajanlott
+
+# DONTES: a "legkisebb változtatás" mértéke: "valasztopolgar" vagy "telepules"
+valtoztatas_merteke: valasztopolgar
+
+# Döntési fa (docs/elvek.md). Csak oda nyúlunk, ahol a korlát sérül. Közös: Tolna 3 -> 2 (mindhárom
+# körzete 20% fölött), a hely Budapesté (17.). Somogy a csapatvezető válaszától függ:
+#   A: Somogyban is ±15% -> Somogy 4 -> 3 (Marcali megszűnik), a hely Pesté (15.)   [fő javaslat]
+#   B: Somogyban ±20% elég -> Somogy 4 marad, csak a barcsi körzetet javítjuk          [tartalék]
+# A körzetszámok megegyeznek a Sainte-Laguë-, Hamilton- és leximin-elosztással (ELTE KRTK, 2026).
+forgatokonyvek:
+  A: {Tolna: 2, Somogy: 3, Budapest: 17, Pest: 15}
+  B: {Tolna: 2, Somogy: 4, Budapest: 17}
+
+# A javaslat megyénként (python -m oevk.javaslat). A beállításokat a kalibráció (oevk/kalibral.py,
+# 2026-10-09) alapján választottuk; ami nincs megadva, a `modell` szakaszból jön.
+javaslat:
+  Tolna:
+    - {db: 2, tures: 0.187, megszunik: "17-02"}          # Dombóvár; 2 körzettel +18,6% (megyehatár)
+  Somogy:
+    - {db: 3, tures: 0.15, megszunik: "15-03"}           # A ág: Marcali
+    - {db: 4, tures: 0.20}                               # B ág: Barcs -20,5% -> -20% alá
+  Budapest:
+    # a 17. körzet a teljes XVIII. kerület (mint 2011–2024 között a Budapest 15. OEVK); a XVIII. kerületből
+    # részt adó körzetek hiányát közvetlen szomszédaik pótolják, a többi budapesti körzet rögzített (Gyula, 2026-10-10)
+    - {db: 17, tures: 0.15, uj_mag: "01-018-041", egesz_kerulet: "Budapest 18. ker."}
+    # összevetésül a korábbi változat: csak az új körzet kap, a kerület nagy része + X. kerületi nyúlvány (63 310 fő)
+    - {db: 17, tures: 0.15, uj_mag: "01-018-041", csak_uj: true, egy_part: true, utotag: "_resz"}
+  Pest:
+    - {db: 15, tures: 0.15, uj_mag: "14-036"}            # Ecser (Vecsési járás); csak_uj itt nem megoldható
+
+graf:
+  min_kozos_hatar_m: 50
+  vetulet: "EPSG:23700"           # EOV
+  # A folyók, amelyeken át csak híd vagy komp köt össze (Lechner vízrajz, vizf_nev)
+  folyok: [Duna, Szentendrei-Duna, Mosoni-Duna, Ráckevei (Soroksári)-Duna, Tisza]
+
+modell:
+  # Tömörség (kalibrálva 2026-10-09): Hess-féle távolság a körzetközépponttól (2 kör újraszámolással),
+  # és az „organikus elv”: új határ kerület/járás határán ingyenes, belsejében hatar_kappa súlyú.
+  hess: 2
+  hess_korok: 2
+  hatar_kappa: 10
+  szabdalas_beta: 2000
+  hatar_csoporton_belul: true
+
