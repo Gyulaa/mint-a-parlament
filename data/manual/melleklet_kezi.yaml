@@ -1,0 +1,61 @@
+# A 2. melléklet kézzel megfogalmazott tételei (oevk/melleklet.py), kulcs: "<körzet>|<kerület>".
+# A hatályos melléklet budapesti stílusában: zárt határvonal utcatengelyek mentén; a kiegészítő körzet
+# ugyanazt a vonalat ellentétes körüljárással kapja. Ahol a szavazókör határa a lakótelepen nem utcán,
+# hanem a házak mögött fut, ott egy záró mondat sorolja fel a vonal túloldalára eső házszámokat (a hatályos
+# melléklet Pécsnél és Debrecennél ugyanígy jelöli a házszámokat: „mindkét oldala”, „házszámok nélkül”).
+# Ellenőrzés: a vonalat az OSM utcatengelyeiből felépítve minden OSM-címet összevetettem az NVI
+# szavazóköri címjegyzéke szerinti körzettel (X. ker. 3000 cím, XX. ker. 5955 cím). A XX. kerületben nincs
+# eltérés. A X. kerületben 2 van, mindkettő a változatlan, hatályos 07-es határvonalon (Robert Bosch u. 4.,
+# Sibrik Miklós út 23.), tehát nem ettől a leírástól függ. (Gyula, 2026-10-10)
+
+"01-08|X. kerület": >-
+  A X. kerület választókerülethez tartozó részének határvonala: A X. kerület határvonalának és a Sibrik
+  Miklós út tengelyvonalainak a Sibrik Miklós úti felüljárónál elhelyezkedő metszéspontjától a Sibrik Miklós
+  út tengelyvonala a Mádi utcáig, a Mádi utca tengelyvonala a Tavas utcáig, a Tavas utca tengelyvonala a
+  Harmat utcáig, a Harmat utca tengelyvonala a Hangár utcáig, a Hangár utca tengelyvonala keleti irányban a X.
+  kerület határvonaláig, a metszésponttól a X. kerület határvonala az óramutató járásával megegyező irányban
+  a kiindulási pontig. A választókerülethez tartozik továbbá a Harmat utca páros oldala a 158. számtól a
+  Sibrik Miklós útig és a Mádi utca 198–200. száma; nem tartozik hozzá a Mádi utca 175. és 177. száma.
+
+"01-14|X. kerület": >-
+  A X. kerület választókerülethez tartozó részének határvonala: A X. kerület határvonalának és a Hangár utca
+  tengelyvonalának a Harmat utcától keletre eső metszéspontjától a Hangár utca tengelyvonala a Harmat utcáig,
+  a Harmat utca tengelyvonala a Tavas utcáig, a Tavas utca tengelyvonala a Mádi utcáig, a Mádi utca
+  tengelyvonala a Sibrik Miklós útig, a Sibrik Miklós út tengelyvonala a Harmat utcáig, a Harmat utca
+  tengelyvonala a Kada utcáig, a Kada utca tengelyvonala a Maglódi útig, a Maglódi út tengelyvonala az
+  Algyógyi utcáig, az Algyógyi utca tengelyvonala a Tárna utcáig, a Tárna utca tengelyvonala és annak
+  elméleti meghosszabbítása a Rákos és Rákosszentmihály vasútállomások között haladó körvasút pályavonaláig,
+  a pályavonal Rákosszentmihály irányában a X. kerület határvonalának metszéspontjáig, a metszésponttól a X.
+  kerület határvonala az óramutató járásával megegyező irányban a kiindulási pontig. A választókerülethez
+  tartozik továbbá a Mádi utca 175. és 177. száma; nem tartozik hozzá a Harmat utca páros oldala a 158.
+  számtól a Sibrik Miklós útig és a Mádi utca 198–200. száma.
+
+"01-09|XX. kerület": >-
+  A XX. kerület választókerülethez tartozó részének határvonala: A Határ út és a Török Flóris utca
+  tengelyvonalainak metszéspontjától a Török Flóris utca tengelyvonala a János térig, a János téri út
+  tengelyvonala a János utcáig, a János utca tengelyvonala a Lajtha László utcáig, a Lajtha László utca
+  tengelyvonala az Ónodi utcáig, az Ónodi utca tengelyvonala a Baross utcáig, a Baross utca tengelyvonala a
+  XX. kerület határvonalának metszéspontjáig, a metszésponttól a XX. kerület határvonala az óramutató
+  járásával megegyező irányban a kiindulási pontig. A választókerülethez tartozik továbbá az Ónodi utca
+  mindkét oldala; nem tartoznak hozzá a János tér és a János utca ingatlanai.
+
+"01-16|XX. kerület": >-
+  A XX. kerület választókerülethez tartozó részének határvonala: A Határ út és a Török Flóris utca
+  tengelyvonalainak metszéspontjától a Török Flóris utca tengelyvonala a János térig, a János téri út
+  tengelyvonala a János utcáig, a János utca tengelyvonala a Lajtha László utcáig, a Lajtha László utca
+  tengelyvonala az Ónodi utcáig, az Ónodi utca tengelyvonala a Baross utcáig, a Baross utca tengelyvonala a
+  XX. kerület határvonalának metszéspontjáig, a metszésponttól a XX. kerület határvonala az óramutató
+  járásával ellentétes irányban a kiindulási pontig. A választókerülethez tartoznak továbbá a János tér és a
+  János utca ingatlanai; nem tartozik hozzá az Ónodi utca egyik oldala sem.
+
+# A záró mondatok házszámai a csapatoldal térképéhez (oevk/melleklet.py `jelolesek`):
+# kerület -> [utca, első házszám, utolsó házszám (null: mindegyik), oldal (páros/páratlan/null), melyik körzeté]
+_hazszamok:
+  "X. kerület":
+    - ["Harmat utca", 158, 162, "páros", "01-08"]
+    - ["Mádi utca", 198, 200, null, "01-08"]
+    - ["Mádi utca", 175, 177, "páratlan", "01-14"]
+  "XX. kerület":
+    - ["Ónodi utca", 1, null, null, "01-09"]
+    - ["János tér", 1, null, null, "01-16"]
+    - ["János utca", 1, null, null, "01-16"]

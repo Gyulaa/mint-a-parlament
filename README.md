@@ -20,24 +20,23 @@ A többi tizenhat megye beosztása változatlan.
 | Megye | Változás | Választók, akik új körzetbe kerülnek |
 | --- | --- | ---: |
 | Tolna | 3 → 2 körzet (a dombóvári megszűnik) | 58 355 |
-| Budapest | 16 → 17 körzet: a 17. körzet a **teljes XVIII. kerület**, ahogy 2011 és 2024 között | 100 844 |
+| Budapest | 16 → 17 körzet: a 17. körzet a **teljes XVIII. kerület**, ahogy 2011 és 2024 között | 100 780 |
 | Somogy | 4 → 3 körzet (a marcali megszűnik) | 70 709 |
 | Pest | 14 → 15 körzet (új körzet Ecser–Gyömrő környékén) | 93 087 |
-| **Összesen** | | **322 995** |
+| **Összesen** | | **322 931** |
 
 Tolna három körzettel nem javítható: a megye választóinak száma három körzetre osztva is átlagosan
-−21%. Ezért Tolna két körzetet kap, a felszabaduló hely pedig oda kerül, ahol a legnagyobb a
-túlterhelés (Budapest). Somogyban az a kérdés, hogy a 15%-os vagy a 20%-os határ a mérce. A fenti
-**A változat** (fő javaslat) Somogyban is a 15%-ot tartja, és a helyet Pest megye kapja. A **B
-változat** (tartalék) csak a 20%-ot tartja: ott Somogy négy körzete marad, és mindössze 600
-választó kerül át (Somogy), így összesen 159 799.
+−21%. Ezért Tolna két körzetet kap. Somogyban a marcali körzet szűnik meg, így ott is minden körzet
+±15%-on belül marad. A két felszabaduló hely oda kerül, ahol a legnagyobb a túlterhelés: Budapestre
+és Pest megyébe.
 
-A körzetszámok az A változatban megegyeznek azzal, amit a szakirodalom is javasol: a
+A körzetszámok megegyeznek azzal, amit a szakirodalom is javasol: a
 Sainte-Laguë-, a Hamilton- és a leximin-elosztással ([ELTE KRTK, 2026](https://krtk.elte.hu/wp-content/uploads/2026/01/krtk_policy_brief_no_03_hu.pdf)),
 valamint a Választási Földrajz 2024-es javaslatával ([Telex](https://telex.hu/valasztasi-foldrajz/2024/08/12/uj-valasztasi-rendszer-2026-aranytalansag)).
 
 A javaslat után egyetlen körzet sem tér el 20%-nál jobban, és Tolna kivételével mind 15%-on belül
-van (Tolna két körzete +18,6%, amit a törvény a megyehatár miatt megenged).
+van (Tolna két körzete +18,6% és +18,5%, amit a törvény a megyehatár miatt megenged; két körzettel
+ennél jobb nem érhető el).
 
 ## Hogyan készült a javaslat?
 
@@ -64,36 +63,55 @@ járáshatáron fusson; ami egy kerületet vagy járást kettévág, az drága (
 Bódi–Kovalcsik, 2024). Ennek ára, hogy néhol valamivel több választó kerül át a minimumnál:
 Somogyban 70 709 a 61 187 helyett, cserébe ott minden új határ járáshatáron fut.
 
-**5. Beállítás és ellenőrzés.** A súlyokat kb. 400 próbafutással állítottuk be, és **minden
-eredménytérképet emberi szem nézett át**; a nyúlványos vagy furcsa alakú változatokat elvetettük. Az
-új körzet helyét Budapesten mind a 23 kerületből, Pesten mind a 18 járásból indítva kipróbáltuk.
+**5. Beállítás és ellenőrzés.** A súlyokat kb. 400 próbafutással állítottuk be. A fontosabb esetek
+térképeit Miklós Gyula nézte át, és ezek alapján döntött; a nyúlványos vagy furcsa alakú
+változatokat elvetettük. Az új körzet helyét Budapesten mind a 23 kerületből, Pesten mind a 18 járásból indítva kipróbáltuk.
 Budapesten végül a folytonosság mellett döntöttünk: a 17. körzet a teljes XVIII. kerület, ahogy
 2011 és 2024 között (Budapest 15. OEVK). Ez kb. 37 ezerrel több áthelyezést jelent, mint a legkisebb
 változtatás, de nincs nyúlvány, és a törvényszövegben egyszerűen „XVIII. kerület” áll.
 
 **6. Pártsemlegesség.** Választási eredmény (pártok szavazatai) nem kerül a számításba.
 
-**7. A törvényszöveg.** A Vjt. 2. melléklete körzetenként felsorolja a települést, illetve
-Budapesten utcák mentén írja le a kerületrészek határát. A program ezt a szerkezetet követve
-elkészíti a változó körzetek szövegét: vidéken a településlistát, Budapesten a határvonal
-tervezetét (utcanevek az OpenStreetMapből, a pontos címlista az NVI utcajegyzékéből).
+**7. A törvényszöveg.** A Vjt. 1. melléklete a megyénkénti körzetszámot, a 2. melléklet
+körzetenként a területet adja meg: vidéken településlistával, Budapesten egész kerületekkel és a
+kerületrészek határvonalával. A program elkészíti a két melléklet teljes, módosított szövegét
+(Word, a jogászoknak, jelölések nélkül): a változatlan körzetek szövege szó szerint a hatályos
+mellékletből való, a változók a javaslatból. A két új budapesti kerületrész (X. és XX. kerület)
+leírása kézi (`data/manual/melleklet_kezi.yaml`), a hatályos budapesti szöveg formájában: zárt
+határvonal utcatengelyek mentén, a szomszéd körzetnek ugyanaz a vonal ellentétes irányban, és ahol a
+lakótelepen a szavazókör határa a házak mögött fut, egy záró mondat sorolja fel a túloldalra eső
+házszámokat. A leírást a két kerület minden házszámos címére összevetettük az NVI címjegyzékével
+(XX. kerület: 5955 cím, nincs eltérés; X. kerület: 3000 cím, 2 eltérés, mindkettő a változatlan,
+hatályos határon).
 
 ### Korlátok, amiket érdemes tudni
 
 - Az eredmény **elsősorban matematikai**. Lehetnek olyan helyi szempontok (közlekedés, összetartozó
   közösségek, földrajzi adottságok), amelyeket a számítás nem tudott figyelembe venni.
 - Budapesten a határ csak szavazókör-határon mozdulhat, és az NVI szavazókör-térképei egyszerűsítettek.
-  A budapesti határvonal-leírásokban 6 rövid szakasz (összesen kb. 1,6 km, mind a X. kerületben)
-  földrajzi pontosításra vár.
+  A két új budapesti kerületrész leírását az OSM utcatengelyeivel és házszámos címeivel ellenőriztem;
+  hivatalos (földhivatali) térképpel nem vetettem össze.
 - A nemzetiségi közösségeket a 2022-es népszámlálás alapján mértük: a négy érintett megyében ma 2,
   a javaslatban 1 nemzetiségi „tömböt” (legalább két szomszédos település, legalább 10% azonos
   nemzetiségű lakossággal) vág ketté körzethatár.
+
+## Az eredmény fájljai
+
+A végeredmény a repóban is megtalálható, a számítás újrafuttatása nélkül:
+
+| Fájl | Tartalom |
+| --- | --- |
+| [`data/interim/melleklet/OEVK_2026_mellekletek.docx`](data/interim/melleklet/OEVK_2026_mellekletek.docx) | a Vjt. 1. és 2. mellékletének teljes, módosított szövege (Word) |
+| [`data/interim/export/oevk_javaslat_2026.zip`](data/interim/export/oevk_javaslat_2026.zip) | térképi export (shapefile, EOV): a mai körzetek, a javaslat és az egységek; leírás az `OLVASSEL.txt`-ben |
+| `data/interim/javaslat/<megye>_<körzetszám>.csv` | a négy érintett megye terve egységenként (`unit_id`, `regi` = mai körzet, `uj` = javasolt körzet) |
+| `data/interim/javaslat/<megye>_<körzetszám>.png` | a terv térképe |
+| `data/interim/javaslat/<megye>_<körzetszám>_meroszam.csv` | mérőszámok: áthelyezett választók, körzetenkénti létszám és eltérés, székhelyek |
 
 ## Replikálás
 
 A teljes számítás bárki által megismételhető; minden bemenet nyilvános.
 
-**Szükséges:** Python 3.11+ (3.13-mal teszteltük), kb. 2 GB szabad hely, internet. A Word-tervezethez
+**Szükséges:** Python 3.11+ (3.13-mal teszteltük), kb. 2 GB szabad hely, internet. A Word-fájlhoz
 Node.js 18+. Windowson és Linuxon is fut.
 
 ```
@@ -136,11 +154,12 @@ python scripts/letoltes.py mind     # NVI, Lechner, KSH, jogszabályszöveg (kb.
 python -m oevk.egysegek             # építőkövek: települések + szavazókörök
 python -m oevk.graf                 # szomszédság, hidak és kompok
 python -m oevk.javaslat             # a javaslat megyénként (8 magos gépen kb. 15 perc)
-python -m oevk.melleklet            # a 2. melléklet szövegtervezete
+python -m oevk.melleklet            # a módosított 1. és 2. melléklet szövege (json)
 python -m oevk.export               # térképi export (shapefile, EOV) GIS-programokhoz
 ```
 
-Opcionálisan a Word-tervezet: `npm install docx@9.5.1`, majd `node scripts/melleklet_docx.js`.
+A Word (a két melléklet teljes, módosított szövege, `data/interim/melleklet/OEVK_2026_mellekletek.docx`):
+`npm install docx@9.5.1`, majd `node scripts/melleklet_docx.js`.
 A beállítások próbája: `python -m oevk.kalibral <eset> [--tures] [--hess] [--kappa] …`
 (lásd a fájl elején).
 
@@ -155,19 +174,20 @@ eltérhet.
 ```
 config.yaml              minden paraméter és döntés (körzetszámok, tűrés, tömörségi súlyok)
 scripts/letoltes.py      a nyilvános adatok letöltése, ellenőrzőösszeggel
-scripts/melleklet_docx.js  a mellékletszöveg Word-változata
+scripts/melleklet_docx.js  a Vjt. 1. és 2. melléklete módosított, egységes szövegben (Word)
 oevk/adat.py             adatbetöltés (NVI, Lechner, KSH)
 oevk/egysegek.py         építőkövek: települések és szavazókörök térképe, létszámmal
 oevk/graf.py             szomszédsági gráf; folyón át csak híd vagy komp
 oevk/modell.py           a megyénkénti optimalizálás (HiGHS)
 oevk/javaslat.py         a végleges javaslat kiszámítása a config.yaml szerint
 oevk/kalibral.py         egy beállítás kipróbálása, térképpel
-oevk/melleklet.py        a Vjt. 2. mellékletének szövegtervezete
+oevk/melleklet.py        a Vjt. 1. és 2. mellékletének módosított szövege (json), a térképes jelölésekkel
 oevk/export.py           shapefile-export (ArcMap, QGIS)
-oevk/kiadvany.py         a csapaton belüli bemutató oldalak (a sablonok nincsenek a repóban)
+oevk/kiadvany.py         a csapaton belüli bemutató oldal (a sablon nincs a repóban)
 data/manifest/           a letöltések jegyzéke (URL, méret, SHA-256)
-data/manual/             kézi kivételek a szomszédsághoz (pl. jóváhagyott átkelő)
-data/raw/, data/interim/ letöltött és számított adat (nincs a repóban, a szkriptek előállítják)
+data/manual/             kézi kivételek a szomszédsághoz; a budapesti kerületrészek kézi leírása (melleklet_kezi.yaml)
+data/raw/, data/interim/ letöltött és számított adat (a szkriptek előállítják; a repóban csak a fenti
+                         eredményfájlok vannak)
 ```
 
 ## Hogyan dolgoztunk: emberi munka és MI-segítség
@@ -178,11 +198,11 @@ oszlott meg:
 
 - **Tervezés és döntések (Miklós Gyula):** a feladat értelmezése a csapat anyaga alapján; az
   alapelvek (106 körzet marad, csak a korlátot sértő helyeken változtatunk); a forgatókönyvek és a
-  végső választások, például Tolna két körzete, a somogyi A/B változat, Budapesten a teljes XVIII.
-  kerület a folytonosság miatt; az adatforrások kiválasztása és a kézi letöltések; az egyeztetés a
+  végső választások, például Tolna két körzete, Somogy három körzete a ±15% miatt, Budapesten a teljes
+  XVIII. kerület a folytonosság miatt, a budapesti kerületrészek határvonalas leírása; az adatforrások kiválasztása és a kézi letöltések; az egyeztetés a
   csapattal.
-- **Ellenőrzés (Miklós Gyula):** minden eredménytérkép és szöveg átnézése. Több kört is
-  visszaküldött: a nyúlványos körzeteket, a gyenge szemléltetést, a pontatlan vagy túlzó
+- **Ellenőrzés (Miklós Gyula):** a fontosabb esetek térképeinek és a szövegeknek az átnézése, és
+  ezek alapján a döntések. Több kört is visszaküldött: a nyúlványos körzeteket, a gyenge szemléltetést, a pontatlan vagy túlzó
   megfogalmazásokat. A tömörségi módszer ennek nyomán többször is átdolgozásra került.
 - **Kódolás, számítás és dokumentáció (MI-asszisztens, irányítással):** a kód nagy részének
   megírása, a számítások futtatása, módszertani javaslatok (pl. a Hess-modell), szakirodalom-keresés,

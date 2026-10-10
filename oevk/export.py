@@ -2,8 +2,7 @@
 
 Rétegek (data/interim/export/oevk_javaslat_2026.zip):
 - korzetek_ma:  a hatályos 106 körzet
-- korzetek_A:   a javaslat, A ág (Somogy ±15%: Tolna 2, Somogy 3, Budapest 17, Pest 15)
-- korzetek_B:   a javaslat, B ág (Somogy ±20%: Tolna 2, Somogy 4, Budapest 17)
+- korzetek_A:   a javaslat (Tolna 2, Somogy 3, Budapest 17, Pest 15 körzet)
 - egysegek:     települések és szavazókörök (Budapest, megosztott városok) a mai és a javasolt körzettel
 
 A mezőnevek legfeljebb 10 karakteresek (shapefile), a kódolás UTF-8 (.cpg fájllal).
@@ -94,15 +93,12 @@ OLVASSEL = """OEVK-javaslat 2026 – térképi export (Miklós Gyula, Mint a par
 Vetület: EOV (EPSG:23700). Kódolás: UTF-8 (.cpg).
 
 korzetek_ma   a hatályos 106 országgyűlési egyéni választókerület
-korzetek_A    javaslat, A ág: Tolna 2, Somogy 3, Budapest 17, Pest 15 körzet (Somogyban is ±15%)
-korzetek_B    javaslat, B ág: Tolna 2, Somogy 4, Budapest 17 körzet (Somogyban ±20%)
+korzetek_A    a javaslat: Tolna 2, Somogy 3, Budapest 17, Pest 15 körzet
 egysegek      települések; Budapesten és a 8 megosztott városban szavazókörök
-hatar_szakaszok  a budapesti kerületrészek új határvonalának szakaszai (A terv): nev = utca a leírásban,
-              ellenoriz = 1 ellenőrizendő szakasz (szam = a szövegtervezetben és az oldalon látható sorszám)
 
 Mezők: oevk (körzet), szekhely, megye, valaszto (2026-os névjegyzék, induló létszám),
-elteres (eltérés az országos átlagtól, {A} választó), oevk_ma / oevk_A / oevk_B (körzet ma és
-a javaslatban), valt_A / valt_B (1 = másik körzetbe kerül), szint (település / szavazókör).
+elteres (eltérés az országos átlagtól, {A} választó), oevk_ma / oevk_A (körzet ma és
+a javaslatban), valt_A (1 = másik körzetbe kerül), szint (település / szavazókör).
 
 A szavazókör-poligonok az NVI egyszerűsített térképeiből készültek, a hiányzó részeket a legközelebbi
 szavazókör tölti ki; utcaszinten közelítők.

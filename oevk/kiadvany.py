@@ -1,6 +1,6 @@
-"""A csapatnak szóló interaktív oldalak (földrajzos, jogász) előállítása.
+"""A csapatnak szóló interaktív bemutató oldal („Körzetszemle 2026”) előállítása.
 
-A web/*.html sablonokba beilleszti a térképadatot (WGS84, egyszerűsített geometria) és a
+A web/foldrajz.html sablonba beilleszti a térképadatot (WGS84, egyszerűsített geometria) és a
 Leaflet stíluslapját (a megosztott oldal nem tölthet be külső CSS-t), az eredmény a
 data/interim/web/ mappába kerül.
 
@@ -286,33 +286,13 @@ def main():
                      "korzetek": korzet_poligonok(e_geo, hozz, A), "szekhely": nevek}
     korzetek_ma = korzet_poligonok(e_geo, ma, A)
 
-    nep = o.groupby("megye").indulo.sum()
-    ma_db = o.groupby("megye").size()
-    nev_rovid = {m: m.replace(" vármegye", "").replace(" főváros", "") for m in nep.index}
-    elosztas = []
-    for m in nep.index:
-        r = nev_rovid[m]
-        elosztas.append({"megye": r, "v": int(nep[m]), "ma": int(ma_db[m]),
-                         **{k: int(f.get(r, ma_db[m])) for k, f in cfg["forgatokonyvek"].items()}})
-    # d'Hondt összevetésül
-    h = pd.Series(0, index=nep.index)
-    for _ in range(cfg["oevk_szam"]):
-        h[(nep / (h + 1)).idxmax()] += 1
-    for x in elosztas:
-        x["dhondt"] = int(h[next(m for m in nep.index if nev_rovid[m] == x["megye"])])
-
     alap = {"A": A, "megyek": megyehatarok(), "folyok": folyo_poligonok()}
     f = INTERIM / "melleklet" / "melleklet_A.json"  # az oldal csak a fő javaslat (A) szövegét mutatja
     melleklet = json.loads(f.read_text(encoding="utf-8"))["korzetek"] if f.exists() else []
-    for k in melleklet:  # a címlistából csak rövid részlet kerül az oldalra; a teljes lista a Word-tervezetben
-        k["cimlistak"] = [{"kerulet": c["kerulet"], "szavazokorok": len(c["szavazokorok"]), "valaszto": c["valaszto"],
-                           "db": len(c["cimek"]), "minta": c["cimek"][:6]} for c in k.get("cimlistak", [])]
     beilleszt("foldrajz.html", "foldrajz.html",
               {**alap, "esetek": es, "korzetek_ma": korzetek_ma, "szekhely_ma": szekhely, "forgatokonyvek": forg,
                "tomb_kuszob": TOMB_KUSZOB, "melleklet": melleklet}, css)
-    beilleszt("jog.html", "jog.html",
-              {**alap, "esetek": es, "korzetek_ma": korzetek_ma, "szekhely_ma": szekhely,
-               "forgatokonyvek": forg, "elosztas": elosztas, "tomb_kuszob": TOMB_KUSZOB}, css)
+    # egyetlen csapatoldal van (a földrajzos); a jogi oldal (jog.html) 2026-10-10 óta nem készül
 
 
 if __name__ == "__main__":

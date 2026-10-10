@@ -19,14 +19,12 @@ turesek:
 # DONTES: a "legkisebb változtatás" mértéke: "valasztopolgar" vagy "telepules"
 valtoztatas_merteke: valasztopolgar
 
-# Döntési fa (docs/elvek.md). Csak oda nyúlunk, ahol a korlát sérül. Közös: Tolna 3 -> 2 (mindhárom
-# körzete 20% fölött), a hely Budapesté (17.). Somogy a csapatvezető válaszától függ:
-#   A: Somogyban is ±15% -> Somogy 4 -> 3 (Marcali megszűnik), a hely Pesté (15.)   [fő javaslat]
-#   B: Somogyban ±20% elég -> Somogy 4 marad, csak a barcsi körzetet javítjuk          [tartalék]
-# A körzetszámok megegyeznek a Sainte-Laguë-, Hamilton- és leximin-elosztással (ELTE KRTK, 2026).
+# Csak oda nyúlunk, ahol a korlát sérül (docs/elvek.md). Tolna 3 -> 2 (mindhárom körzete 20% fölött),
+# Somogy 4 -> 3 (Marcali megszűnik; mindenhol ±15%, csapatvezető, 2026-10-10), a két hely Budapesté (17.)
+# és Pesté (15.). A korábbi B ág (Somogy 4, ±20%) kikerült. A körzetszámok megegyeznek a Sainte-Laguë-,
+# Hamilton- és leximin-elosztással (ELTE KRTK, 2026).
 forgatokonyvek:
   A: {Tolna: 2, Somogy: 3, Budapest: 17, Pest: 15}
-  B: {Tolna: 2, Somogy: 4, Budapest: 17}
 
 # A javaslat megyénként (python -m oevk.javaslat). A beállításokat a kalibráció (oevk/kalibral.py,
 # 2026-10-09) alapján választottuk; ami nincs megadva, a `modell` szakaszból jön.
@@ -39,7 +37,9 @@ javaslat:
   Budapest:
     # a 17. körzet a teljes XVIII. kerület (mint 2011–2024 között a Budapest 15. OEVK); a XVIII. kerületből
     # részt adó körzetek hiányát közvetlen szomszédaik pótolják, a többi budapesti körzet rögzített (Gyula, 2026-10-10)
-    - {db: 17, tures: 0.15, uj_mag: "01-018-041", egesz_kerulet: "Budapest 18. ker."}
+    # a X. kerületi 043. szavazókör a 14. körzetben marad: nélküle a 08. körzet X. kerületi része nyúlványt kapott
+    # a Lavotta utca felé; helyette a 054. kerül át (Gyula, 2026-10-10)
+    - {db: 17, tures: 0.15, uj_mag: "01-018-041", egesz_kerulet: "Budapest 18. ker.", rogzit: {"01-010-043": "01-14"}}
     # összevetésül a korábbi változat: csak az új körzet kap, a kerület nagy része + X. kerületi nyúlvány (63 310 fő)
     - {db: 17, tures: 0.15, uj_mag: "01-018-041", csak_uj: true, egy_part: true, utotag: "_resz"}
   Pest:

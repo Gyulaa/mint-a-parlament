@@ -1,6 +1,28 @@
 # Nyers és köztes adat: a scripts/letoltes.py újra előállítja, a data/manifest/ rögzíti
 data/raw/
-data/interim/
+data/interim/*
+# Kivétel: a nyilvános végeredmény (bárki, pl. ellenfél vagy döntőbíró is megnézheti):
+# a négy érintett megye végleges terve, a Vjt. két mellékletének módosított szövege és a térképi export
+!data/interim/javaslat/
+data/interim/javaslat/*
+!data/interim/javaslat/Budapest_17.csv
+!data/interim/javaslat/Budapest_17.png
+!data/interim/javaslat/Budapest_17_meroszam.csv
+!data/interim/javaslat/Pest_15.csv
+!data/interim/javaslat/Pest_15.png
+!data/interim/javaslat/Pest_15_meroszam.csv
+!data/interim/javaslat/Somogy_3.csv
+!data/interim/javaslat/Somogy_3.png
+!data/interim/javaslat/Somogy_3_meroszam.csv
+!data/interim/javaslat/Tolna_2.csv
+!data/interim/javaslat/Tolna_2.png
+!data/interim/javaslat/Tolna_2_meroszam.csv
+!data/interim/melleklet/
+data/interim/melleklet/*
+!data/interim/melleklet/OEVK_2026_mellekletek.docx
+!data/interim/export/
+data/interim/export/*
+!data/interim/export/oevk_javaslat_2026.zip
 *.tmp
 
 __pycache__/

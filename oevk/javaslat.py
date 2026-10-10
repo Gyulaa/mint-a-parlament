@@ -61,6 +61,11 @@ def terv(e, sz, megye, beall, A, mcfg, geo=None):
                                                 else [j for j in s_ if j in valtozhat]) for i, s_ in sz_.items()}
         m.szabad_korzetek = szabad
         print(f"{megye}: {beall['egesz_kerulet']} egészben -> {uj}; változhat: {sorted(valtozhat)}", flush=True)
+    if "rogzit" in beall:  # egyes egységek kötött körzetben (pl. nyúlvány elkerülésére), {unit_id: oevk}
+        kotott = {int(m.id[u]): k for u, k in beall["rogzit"].items()}
+        elozo = m.szabad_korzetek
+        m.szabad_korzetek = lambda korz, tav, uj_tav=15: {i: ([kotott[i]] if i in kotott else s_)
+                                                          for i, s_ in elozo(korz, tav, uj_tav=uj_tav).items()}
     r = m.megold(korzetek, A, beall["tures"], None, idokorlat=beall.get("idokorlat", 300),
                  ujrainditas=beall.get("ujrainditas", 4), lepesek=beall.get("lepesek", 300_000))
     if "egesz_kerulet" in beall:
