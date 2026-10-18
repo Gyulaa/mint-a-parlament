@@ -4,8 +4,8 @@ A web/foldrajz.html sablonba beilleszti a térképadatot (WGS84, egyszerűsítet
 Leaflet stíluslapját (a megosztott oldal nem tölthet be külső CSS-t), az eredmény a
 data/interim/web/ mappába kerül.
 
-Javaslat: csak oda nyúlunk, ahol a korlát sérül (docs/elvek.md). A megyénkénti terveket az
-oevk/javaslat.py számolja (config: javaslat), a forgatókönyvek (A, B) a körzetszámokat adják.
+Javaslat: csak oda nyúlunk, ahol a korlát sérül (lásd a README-t). A megyénkénti terveket az
+oevk/javaslat.py számolja (config: javaslat), a körzetszámokat a config `forgatokonyvek` szakasza adja.
 
 Futtatás: python -m oevk.kiadvany
 """

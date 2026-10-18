@@ -52,6 +52,11 @@ def main():
         for megye, db in cfg["forgatokonyvek"][ag].items():  # az új körzetek székhelye
             r = pd.read_csv(INTERIM / "javaslat" / f"{megye}_{db}_meroszam.csv").iloc[0]
             szekhely.update(json.loads(r.szekhelyek))
+        # az új körzet székhelye vidéken a legnépesebb települése, ahogy a 2. mellékletben (oevk/melleklet.py)
+        for k in set(u[f"oevk_{ag}"]) - set(o.oevk):
+            t = u[u[f"oevk_{ag}"] == k]
+            if t.megye.iloc[0] != "főváros":
+                szekhely[k] = t.groupby("nev").valaszto.sum().idxmax()
 
     fajlok = []
     for nev, oszlop in retegek.items():

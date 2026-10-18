@@ -1,8 +1,8 @@
 # Nyers és köztes adat: a scripts/letoltes.py újra előállítja, a data/manifest/ rögzíti
 data/raw/
 data/interim/*
-# Kivétel: a nyilvános végeredmény (bárki, pl. ellenfél vagy döntőbíró is megnézheti):
-# a négy érintett megye végleges terve, a Vjt. két mellékletének módosított szövege és a térképi export
+# Kivétel: a nyilvános végeredmény: a négy érintett megye végleges terve, a Vjt. két mellékletének
+# módosított szövege, a térképi export és az áttekintő térkép
 !data/interim/javaslat/
 data/interim/javaslat/*
 !data/interim/javaslat/Budapest_17.csv
@@ -23,19 +23,14 @@ data/interim/melleklet/*
 !data/interim/export/
 data/interim/export/*
 !data/interim/export/oevk_javaslat_2026.zip
+!data/interim/terkep/
+data/interim/terkep/*
+!data/interim/terkep/oevk_2026_javaslat.png
 *.tmp
 
 __pycache__/
 .venv*/
 .ipynb_checkpoints/
-
-# Munkafolyamat- és csapatdokumentumok (Claude-jegyzetek, belső terv, a jogi csapat anyaga és munkaoldala)
-CLAUDE.md
-docs/
-terv.md
-EVK_jogi_krit*.docx
-web/
-belso_anyagok.zip
 
 node_modules/
 package-lock.json

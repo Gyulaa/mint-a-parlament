@@ -19,8 +19,8 @@ turesek:
 # DONTES: a "legkisebb változtatás" mértéke: "valasztopolgar" vagy "telepules"
 valtoztatas_merteke: valasztopolgar
 
-# Csak oda nyúlunk, ahol a korlát sérül (docs/elvek.md). Tolna 3 -> 2 (mindhárom körzete 20% fölött),
-# Somogy 4 -> 3 (Marcali megszűnik; mindenhol ±15%, csapatvezető, 2026-10-10), a két hely Budapesté (17.)
+# Csak oda nyúlunk, ahol a korlát sérül (README). Tolna 3 -> 2 (mindhárom körzete 20% fölött),
+# Somogy 4 -> 3 (Marcali megszűnik; mindenhol ±15%, 2026-10-10), a két hely Budapesté (17.)
 # és Pesté (15.). A korábbi B ág (Somogy 4, ±20%) kikerült. A körzetszámok megegyeznek a Sainte-Laguë-,
 # Hamilton- és leximin-elosztással (ELTE KRTK, 2026).
 forgatokonyvek:

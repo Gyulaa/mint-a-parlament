@@ -1,7 +1,7 @@
 """A javaslat végleges számítása a config.yaml `javaslat` szakasza szerint.
 
 Csak azok a megyék változnak, ahol a korlát sérül, illetve ahová a felszabaduló hely kerül
-(döntési fa: docs/elvek.md). Megyénként és körzetszámonként egy terv készül a rögzített
+(lásd a README-t). Megyénként és körzetszámonként egy terv készül a rögzített
 beállításokkal (Hess-tömörség, organikus elv, megszűnő körzet vagy új körzet magja).
 
 Kimenet: data/interim/javaslat/<megye>_<db>.csv (unit_id, regi, uj), javaslat.csv (mérőszámok),

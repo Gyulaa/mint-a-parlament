@@ -103,6 +103,7 @@ A végeredmény a repóban is megtalálható, a számítás újrafuttatása nél
 | --- | --- |
 | [`data/interim/melleklet/OEVK_2026_mellekletek.docx`](data/interim/melleklet/OEVK_2026_mellekletek.docx) | a Vjt. 1. és 2. mellékletének teljes, módosított szövege (Word) |
 | [`data/interim/export/oevk_javaslat_2026.zip`](data/interim/export/oevk_javaslat_2026.zip) | térképi export (shapefile, EOV): a mai körzetek, a javaslat és az egységek; leírás az `OLVASSEL.txt`-ben |
+| [`data/interim/terkep/oevk_2026_javaslat.png`](data/interim/terkep/oevk_2026_javaslat.png) | áttekintő térkép: a 106 körzet az átlagtól való eltérés szerint, Budapest kivágatban, a négy érintett megye ma és a javaslatban |
 | `data/interim/javaslat/<megye>_<körzetszám>.csv` | a négy érintett megye terve egységenként (`unit_id`, `regi` = mai körzet, `uj` = javasolt körzet) |
 | `data/interim/javaslat/<megye>_<körzetszám>.png` | a terv térképe |
 | `data/interim/javaslat/<megye>_<körzetszám>_meroszam.csv` | mérőszámok: áthelyezett választók, körzetenkénti létszám és eltérés, székhelyek |
@@ -156,7 +157,13 @@ python -m oevk.graf                 # szomszédság, hidak és kompok
 python -m oevk.javaslat             # a javaslat megyénként (8 magos gépen kb. 15 perc)
 python -m oevk.melleklet            # a módosított 1. és 2. melléklet szövege (json)
 python -m oevk.export               # térképi export (shapefile, EOV) GIS-programokhoz
+python -m oevk.terkep               # áttekintő térkép (300 dpi PNG + PDF), csak az exportból
 ```
+
+Az áttekintő térkép (`data/interim/terkep/oevk_2026_javaslat.png`, `.pdf`) a 106 körzetet az
+országos átlagtól való eltérés szerint színezi, Budapestet kivágatban, alul Somogy–Tolnát és
+Budapest–Pestet ma és a javaslatban mutatja. Csak a térképi exportot olvassa, így a teljes számítás
+nélkül, a repóból is lefut. A székhelyek a 2. melléklet szerintiek.
 
 A Word (a két melléklet teljes, módosított szövege, `data/interim/melleklet/OEVK_2026_mellekletek.docx`):
 `npm install docx@9.5.1`, majd `node scripts/melleklet_docx.js`.
@@ -183,6 +190,7 @@ oevk/javaslat.py         a végleges javaslat kiszámítása a config.yaml szeri
 oevk/kalibral.py         egy beállítás kipróbálása, térképpel
 oevk/melleklet.py        a Vjt. 1. és 2. mellékletének módosított szövege (json), a térképes jelölésekkel
 oevk/export.py           shapefile-export (ArcMap, QGIS)
+oevk/terkep.py           áttekintő térkép (PNG, PDF) a shapefile-exportból
 oevk/kiadvany.py         a csapaton belüli bemutató oldal (a sablon nincs a repóban)
 data/manifest/           a letöltések jegyzéke (URL, méret, SHA-256)
 data/manual/             kézi kivételek a szomszédsághoz; a budapesti kerületrészek kézi leírása (melleklet_kezi.yaml)
